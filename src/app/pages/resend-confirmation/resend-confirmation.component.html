@@ -1,0 +1,40 @@
+<mat-sidenav-container class="h-100">
+    <div fxLayout="row" fxLayoutAlign="center center" class="h-100">
+        <mat-card>
+            <mat-spinner *ngIf="isLoading"></mat-spinner>
+            <form
+                class="example-form"
+                (submit)="onSubmit(resendEmail)"
+                #resendEmail="ngForm"
+            >
+                <app-content-header
+                    [icon]="'email'"
+                    [title]="'Resend code'"
+                    [hideBreadcrumb]="true"
+                    [hasBgImage]="true"
+                    [class]="'py-4'"
+                ></app-content-header>
+                <div class="p-3">
+                    <mat-form-field>
+                        <input
+                            type="email"
+                            matInput
+                            name="email"
+                            ngModel
+                            placeholder="Enter the your email"
+                            #emailInput="ngModel"
+                            required
+                            email
+                        />
+                        <mat-error *ngIf="emailInput.invalid"
+                            >Please enter a valid email.</mat-error
+                        >
+                    </mat-form-field>
+                    <button mat-raised-button color="accent" type="submit">
+                        Send
+                    </button>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</mat-sidenav-container>
